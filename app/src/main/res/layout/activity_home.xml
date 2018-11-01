@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#013243"
+    tools:context=".HomeActivity">
+
+
+    <TextView
+        android:id="@+id/homeHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="-50dp"
+        android:layout_marginTop="20dp"
+        android:text="ParkYard"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/homeLogoView"
+        android:layout_width="69dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pylogo" />
+
+    <TextView
+        android:id="@+id/welcomeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="WELCOME"
+        android:textColor="@android:color/white"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeHeader"
+        android:layout_marginTop="40dp"
+        />
+
+    <TextView
+        android:id="@+id/usernameView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Clinton Soares"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintTop_toBottomOf="@id/welcomeView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        app:fontFamily="cursive"
+        />
+
+
+    <TextView
+        android:id="@+id/wwyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="What would you like to do?"
+        android:textColor="@android:color/white"
+        android:textSize="40dp"
+        app:fontFamily="serif-monospace"
+        app:layout_constraintTop_toBottomOf="@id/usernameView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/rentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:text=" book your space "
+        android:textColor="@android:color/background_light"
+        android:transitionName="rentTransition"
+        app:layout_constraintTop_toBottomOf="@id/wwyView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        />
+
+    <Button
+        android:id="@+id/lendBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffcb05"
+        android:text=" loan your lawn "
+        android:textColor="@android:color/background_dark"
+        android:transitionName="lendTransition"
+        app:layout_constraintTop_toBottomOf="@id/rentBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>
