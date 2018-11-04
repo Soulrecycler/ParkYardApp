@@ -178,4 +178,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
     }
+
+    //Go to MainActivity on back button pressed
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+        finish();
+
+    }
 }

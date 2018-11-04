@@ -128,5 +128,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    //Go to MainActivity on back button pressed
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
+
+    }
 }
 

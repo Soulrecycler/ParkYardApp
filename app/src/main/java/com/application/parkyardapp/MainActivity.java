@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user= firebaseAuth.getCurrentUser();
 
 
-        myLayout= (RelativeLayout) findViewById(R.id.myLayout);
-        signup=(Button)findViewById(R.id.button2);
-        login=(Button)findViewById(R.id.btnlogin2);
+        myLayout=findViewById(R.id.myLayout);
+        signup=findViewById(R.id.button2);
+        login=findViewById(R.id.btnlogin2);
         animationDrawable= (AnimationDrawable) myLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(2500);
@@ -61,10 +61,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 
 }

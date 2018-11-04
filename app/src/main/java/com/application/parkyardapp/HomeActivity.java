@@ -144,4 +144,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+
+    //Close app if back button pressed
+    @Override
+    public void onBackPressed() {
+        System.exit(0);
+    }
+
 }
