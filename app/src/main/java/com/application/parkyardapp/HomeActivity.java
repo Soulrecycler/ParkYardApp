@@ -3,6 +3,7 @@ package com.application.parkyardapp;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,23 +13,27 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeActivity extends AppCompatActivity {
 
     FloatingActionButton fab_plus,fab_settings,fab_logout;
     Animation fab_open,fab_close,rotate_clockwise,rotate_anticlockwise;
-    TextView usernameView;
-    private static String TAG = "HomeActivity.this";
 
     Boolean fab_isOpen = false;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
+
+    TextView usernameView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,36 @@ public class HomeActivity extends AppCompatActivity {
         lendBtn = findViewById(R.id.lendBtn);
         usernameView = findViewById(R.id.usernameView);
 
+        //fetch current user uid
+        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //fetch document using current user id
+        DocumentReference userRef = db.collection("users").document(user_id);
+
+        //fetch details from document and display first and last name of current user
+        userRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            String fname = documentSnapshot.getString("first_name");
+                            String lname = documentSnapshot.getString("last_name");
+                            usernameView.setText(fname+" "+lname);
+                        }
+                        else
+                        {
+                            Toast.makeText(HomeActivity.this, "User Details do not exist", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
         fab_plus = findViewById(R.id.fab_plus);
         fab_settings = findViewById(R.id.fab_settings);
         fab_logout = findViewById(R.id.fab_logout);
@@ -56,18 +91,6 @@ public class HomeActivity extends AppCompatActivity {
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
         rotate_clockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_clockwise);
         rotate_anticlockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_anticlockwise);
-
-
-        //fetch current user uid
-        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        // Create a reference to the users collection
-        CollectionReference usernameRef = db.collection("users");
-
-        // Create a query against the collection.
-        Query query = usernameRef.whereEqualTo("user_id",user_id);
-
-
 
 
         rentBtn.setOnClickListener(new View.OnClickListener() {
