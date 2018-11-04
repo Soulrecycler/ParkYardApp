@@ -100,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+
         db.collection("users").document(user_id).set(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
