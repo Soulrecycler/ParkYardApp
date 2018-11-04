@@ -20,16 +20,14 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
 
-    private EditText Name;
-    private EditText Password;
+    private EditText email;
+    private EditText password;
     private TextView Info;
     private Button Login;
-    private int counter=5;
+    private int counter=4;
     private TextView userRegister;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
-
-
 
 
 
@@ -38,33 +36,26 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Name = (EditText) findViewById(R.id.etName);
-        Password = (EditText) findViewById(R.id.etPassword);
+        email = (EditText) findViewById(R.id.etmail);
+        password = (EditText) findViewById(R.id.etPassword);
         Info = (TextView) findViewById(R.id.tvinfo);
         Login = (Button) findViewById(R.id.btnLogin);
         userRegister = (TextView) findViewById(R.id.tvsign);
 
-        Info.setText("No of attempts remaining:5");
-
         //firebase
         firebaseAuth= FirebaseAuth.getInstance();
-        FirebaseUser user= firebaseAuth.getCurrentUser();
 
         //progressdialogue
         progressDialog=new ProgressDialog(this);
 
 
-        if (user!=null){
-            finish();
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));//change the redirect activity once clinton has done
-        }
-
-
-
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate(Name.getText().toString(), Password.getText().toString());
+
+                if (!emptyFieldValidate(email.getText().toString(),password.getText().toString())){
+                    validate(email.getText().toString(), password.getText().toString());
+                }
             }
         });
 
@@ -82,24 +73,23 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-    private void validate(String userName, String userPassword) {
+    // validate if user is already registered
+    private void validate(String userEMail, String userPassword) {
 
         progressDialog.setMessage("Please Wait! patience is key.");
         progressDialog.show();
 
-
-
-        firebaseAuth.signInWithEmailAndPassword(userName,userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(userEMail,userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
 
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));//go to homepage
                 }
                 else{
-                    if (counter==5){
+                    if (counter==4){
                         Info.setVisibility(View.VISIBLE);
                     }
                     progressDialog.dismiss();
@@ -115,20 +105,28 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        /* if ((userName.equals("Admin") && (userPassword.equals("1234")))) {
 
-            Intent second = new Intent(this, RegisterActivity.class);
-            startActivity(second);
+    }
+
+
+    // validate if login fields are empty
+    private Boolean emptyFieldValidate(String userEMail, String userPassword){
+
+        if (userEMail.isEmpty()) {
+            email.setError("Email required");
+            email.requestFocus();
+            return true;
         }
-        else
-        {
 
+        if (userPassword.isEmpty()) {
+            password.setError("Password required");
+            password.requestFocus();
+            return true;
+        }
+        return false;
 
-
-
-
-        }*/
     }
 
 
 }
+

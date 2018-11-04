@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout myLayout;
@@ -15,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button signup;
     private Button login;
+    private FirebaseAuth firebaseAuth;
 
 
 
@@ -23,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        FirebaseUser user= firebaseAuth.getCurrentUser();
 
 
         myLayout= (RelativeLayout) findViewById(R.id.myLayout);
@@ -33,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(2500);
         animationDrawable.start();
 
+        if (user!=null){
+            finish();
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));//auto login check if user did not logout
+        }
 
 
         login.setOnClickListener(new View.OnClickListener() {
