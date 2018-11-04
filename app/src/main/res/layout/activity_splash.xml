@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/gifSplash"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-138dp"
+        android:layout_marginTop="-200dp"
         app:srcCompat="@drawable/pylogo" />
 
     <pl.droidsonroids.gif.GifImageView
