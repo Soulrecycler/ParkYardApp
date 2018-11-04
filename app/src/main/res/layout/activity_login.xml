@@ -19,6 +19,7 @@
         android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="Username"
+        android:backgroundTint="#2e3131"
         android:inputType="textPersonName" />
 
     <EditText
@@ -30,6 +31,7 @@
         android:layout_marginTop="191dp"
         android:ems="10"
         android:hint="Password"
+        android:backgroundTint="#2e3131"
         android:inputType="textPassword" />
 
     <Button
@@ -48,6 +50,7 @@
         android:layout_height="39dp"
         android:layout_centerInParent="true"
         android:text="No. of incorrect attempts:"
+        android:visibility="invisible"
         android:textAlignment="center" />
 
     <TextView

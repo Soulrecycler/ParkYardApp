@@ -43,6 +43,6 @@
         android:fontFamily="@font/lobster"
         android:text="ParkYard"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 </RelativeLayout>

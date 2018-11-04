@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validate(String userName, String userPassword) {
 
-        progressDialog.setMessage("wait bitch waaaait! patience is key.");
+        progressDialog.setMessage("Please Wait! patience is key.");
         progressDialog.show();
 
 
@@ -99,8 +99,11 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));//go to homepage
                 }
                 else{
+                    if (counter==5){
+                        Info.setVisibility(View.VISIBLE);
+                    }
                     progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this,"damn bruh,looks like we have an error or maybe its just you :)", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"Looks like we have an error here!!!", Toast.LENGTH_LONG).show();
                     counter--;
                     Info.setText("no of attempts remaining:" + String.valueOf(counter));
                     if (counter==0){
