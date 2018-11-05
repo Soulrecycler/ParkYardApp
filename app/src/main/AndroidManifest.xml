@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoanActivity" />
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

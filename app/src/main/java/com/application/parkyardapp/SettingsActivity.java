@@ -14,17 +14,25 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     Button changeProfileBtn,changePassBtn,supportBtn,logoutBtn;
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        changeProfileBtn = findViewById(R.id.changeProfileBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+
+        changeProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this,ProfileActivity.class));
+            }
+        });
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
