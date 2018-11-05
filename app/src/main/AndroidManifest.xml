@@ -28,7 +28,8 @@
         <activity
             android:name=".HomeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:noHistory="true"/>
         <activity
             android:name=".BookActivity"
             android:screenOrientation="portrait"
