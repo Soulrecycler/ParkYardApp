@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class LogoutActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
 
     private FirebaseAuth firebaseAuth;
@@ -19,7 +19,7 @@ public class LogoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logout);
+        setContentView(R.layout.activity_settings);
 
         firebaseAuth=FirebaseAuth.getInstance();
         logout=(Button)findViewById(R.id.btnlogout);
@@ -30,7 +30,7 @@ public class LogoutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 firebaseAuth.signOut();
                 finish();
-                startActivity(new Intent(LogoutActivity.this,LoginActivity.class));
+                startActivity(new Intent(SettingsActivity.this,LoginActivity.class));
             }
         });
 

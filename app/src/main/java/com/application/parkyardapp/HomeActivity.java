@@ -93,6 +93,7 @@ public class HomeActivity extends AppCompatActivity {
         rotate_anticlockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_anticlockwise);
 
 
+        //Onclick function for Booking a space
         rentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +122,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+        //Onclick function for keeping a space for rent
         lendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,6 +149,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+/*-------------------------------------------------------------------COPY THIS FAB CODE FOR ALL PAGES ------------------------------------------------------------------------------------------------*/
+        //fab for settings and log out
         fab_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,11 +186,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
     }
-
-
     //Close app if back button pressed
     @Override
     public void onBackPressed() {

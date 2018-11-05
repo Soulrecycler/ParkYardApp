@@ -14,11 +14,12 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingLeft="-50dp"
-        android:layout_marginTop="20dp"
         android:text="ParkYard"
         android:textColor="@android:color/background_light"
         android:textSize="36sp"
         android:textStyle="bold"
+        app:fontFamily="@font/lobster"
+        android:background="#2e3131"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,7 @@
         android:layout_width="69dp"
         android:layout_height="44dp"
         android:layout_marginLeft="280dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -110,19 +111,19 @@
         android:elevation="4dp"
         />
 
-    <!-- if backgroundTint looks weird for the below FABs, remove it -->
+    <!-- __________________________COPY THE BELOW FABS FOR ALL ACTIVITIES__________________________ -->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginBottom="16dp"
         android:elevation="6dp"
         android:src="@drawable/fab_plus"
         app:backgroundTint="@color/fab2_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/lendBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:pressedTranslationZ="12dp" />
 
@@ -157,6 +158,7 @@
         app:backgroundTint="@color/fab1_color"
         android:visibility="invisible"
         />
+    <!-- __________________________________________________________________________________________ -->
 
 
 
