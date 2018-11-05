@@ -1,5 +1,6 @@
 package com.application.parkyardapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private DocumentReference userRef;
-    private String user_id,email,fname,lname,phone,address;
+    public String user_id,email,fname,lname,phone,address;
     EditText userEmail,userFname,userLname,userPhone,userAddress;
     Button updateBtn;
 
@@ -41,6 +42,17 @@ public class ProfileActivity extends AppCompatActivity {
         userAddress = findViewById(R.id.etUserAddress);
 
         updateBtn = findViewById(R.id.updateBtn);
+    }
+
+    //display existing details in edit text
+    private void displayCurrentData(){
+
+        userEmail.setText(email);
+        userFname.setText(fname);
+        userLname.setText(lname);
+        userPhone.setText(phone);
+        userAddress.setText(address);
+
     }
 
     //fetch data from firebase and store in object variables
@@ -67,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
                             lname = documentSnapshot.getString("last_name");
                             phone = documentSnapshot.getString("phone");
                             address = documentSnapshot.getString("address");
+                            displayCurrentData();
                         }
                         else
                         {
@@ -84,18 +97,6 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-    private void displayCurrentData(){
-
-        userEmail.setText(email);
-        userFname.setText(fname);
-        userLname.setText(lname);
-        userPhone.setText(phone);
-        userAddress.setText(address);
-
-    }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,12 +106,10 @@ public class ProfileActivity extends AppCompatActivity {
         setupUI();
         fetchData();
 
-        displayCurrentData();
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 //Update values if the editText values are not empty
                 if (!userEmail.getText().toString().trim().isEmpty()) {
@@ -141,7 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(ProfileActivity.this, "User Information Saved", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this, "User Details have been updated", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -152,6 +151,7 @@ public class ProfileActivity extends AppCompatActivity {
                             }
                         });
 
+                startActivity(new Intent(ProfileActivity.this,HomeActivity.class));
 
             }
         });
