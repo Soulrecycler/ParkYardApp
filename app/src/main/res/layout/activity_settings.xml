@@ -34,5 +34,52 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/settings_logo" />
 
+    <LinearLayout
+        android:id="@+id/settingsMenuContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/homeHeader">
+
+        <Button
+            android:id="@+id/changeProfileBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:text="CHANGE USER INFO" />
+
+        <Button
+            android:id="@+id/changePassBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:text="CHANGE PASSWORD"
+            />
+
+        <Button
+            android:id="@+id/supportBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:text="CUSTOMER SUPPORT"
+            />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:text="LOGOUT"
+            />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

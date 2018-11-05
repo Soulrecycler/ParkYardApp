@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     //Close app if back button pressed
     @Override
     public void onBackPressed() {
-
+        finish();
         System.exit(0);
     }
 

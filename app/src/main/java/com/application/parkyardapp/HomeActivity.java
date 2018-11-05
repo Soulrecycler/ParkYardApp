@@ -186,6 +186,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        fab_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,SettingsActivity.class));
+            }
+        });
+
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
     }

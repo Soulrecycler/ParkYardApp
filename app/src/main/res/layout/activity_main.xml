@@ -18,6 +18,7 @@
         android:background="@drawable/btn"
         android:text="Login"
         android:textAllCaps="false"
+        android:elevation="4dp"
         android:textColor="#F44336" />
 
     <Button
@@ -28,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="180dp"
         android:background="@drawable/btn"
-
+        android:elevation="4dp"
         android:text="Create New Account"
         android:textAllCaps="false"
         android:textColor="#F44336" />
