@@ -28,6 +28,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
+
+    //static string for use in firestore function
     private static final String TAG = "RegisterActivity";
 
 
