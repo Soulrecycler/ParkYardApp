@@ -23,92 +23,99 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <ScrollView
-        android:id="@+id/userDetailsView"
+    <LinearLayout
+        android:id="@+id/detailsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/regView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="30dp"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ScrollView
+            android:id="@+id/userDetailsView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            >
 
-            <EditText
-                android:id="@+id/etUserEmail"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/etUserpass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="Password"
-                android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/etUserEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/etFirstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="First Name"
-                android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/etUserpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
 
-            <EditText
-                android:id="@+id/etLastName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="Last Name"
-                android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/etFirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="First Name"
+                    android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etUserPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="Phone Number"
-                android:inputType="phone"/>
+                <EditText
+                    android:id="@+id/etLastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Last Name"
+                    android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etUserAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:layout_marginTop="10dp"
-                android:hint="Address"
-                android:inputType="textPostalAddress"/>
+                <EditText
+                    android:id="@+id/etUserPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Phone Number"
+                    android:inputType="phone"/>
+
+                <EditText
+                    android:id="@+id/etUserAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Address"
+                    android:inputType="textPostalAddress"/>
 
 
 
-        </LinearLayout>
-    </ScrollView>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btnRegister"
