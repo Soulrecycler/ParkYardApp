@@ -50,6 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="4dp"
+            android:background="@color/fab2_color"
+            android:padding="10dp"
             android:text="CHANGE USER INFO" />
 
         <Button
@@ -58,6 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:elevation="4dp"
+            android:background="@color/fab2_color"
+            android:padding="10dp"
             android:text="CHANGE PASSWORD"
             />
 
@@ -67,6 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:elevation="4dp"
+            android:background="@color/fab2_color"
+            android:padding="10dp"
             android:text="CUSTOMER SUPPORT"
             />
 
@@ -76,6 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:elevation="4dp"
+            android:background="@color/fab2_color"
+            android:padding="10dp"
             android:text="LOGOUT"
             />
 
