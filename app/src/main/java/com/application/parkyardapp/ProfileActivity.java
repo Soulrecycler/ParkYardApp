@@ -25,8 +25,8 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private DocumentReference userRef;
-    public String user_id,email,fname,lname,phone,address;
-    EditText userEmail,userFname,userLname,userPhone,userAddress;
+    public String user_id,fname,lname,phone,address;
+    EditText userFname,userLname,userPhone,userAddress;
     Button updateBtn;
 
     //static string for use in firestore function
@@ -35,19 +35,16 @@ public class ProfileActivity extends AppCompatActivity {
 
     // assigner function
     private void setupUI(){
-        userEmail = findViewById(R.id.etUserEmail);
         userFname = findViewById(R.id.etFirstName);
         userLname = findViewById(R.id.etLastName);
         userPhone = findViewById(R.id.etUserPhone);
         userAddress = findViewById(R.id.etUserAddress);
-
         updateBtn = findViewById(R.id.updateBtn);
     }
 
     //display existing details in edit text
     private void displayCurrentData(){
 
-        userEmail.setText(email);
         userFname.setText(fname);
         userLname.setText(lname);
         userPhone.setText(phone);
@@ -63,7 +60,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         //fetch current user uid
         user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
         //fetch document using current user id
         userRef = db.collection("users").document(user_id);
@@ -112,9 +108,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Update values if the editText values are not empty
-                if (!userEmail.getText().toString().trim().isEmpty()) {
-                    email = userEmail.getText().toString().trim();
-                }
                 if (!userFname.getText().toString().trim().isEmpty()) {
                     fname = userFname.getText().toString().trim();
                 }
