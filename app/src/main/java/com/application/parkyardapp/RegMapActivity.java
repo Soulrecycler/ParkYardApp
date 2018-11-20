@@ -75,8 +75,6 @@ public class RegMapActivity extends FragmentActivity implements OnMapReadyCallba
         user.put("latitude",latitude);
         user.put("longitude",longitude);
 
-        Toast.makeText(RegMapActivity.this, city+" "+state+" "+price+" "+latitude+" "+longitude, Toast.LENGTH_LONG).show();
-
         db.collection("users").document(user_id).collection("places").document().set(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -189,6 +187,7 @@ public class RegMapActivity extends FragmentActivity implements OnMapReadyCallba
                 mMap.addMarker(markerOptions);
 
                 markedLocation = markerOptions.getPosition();
+                saveBtn.setVisibility(View.VISIBLE);
 
 
             }

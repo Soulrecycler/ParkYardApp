@@ -73,7 +73,7 @@
             android:elevation="4dp"
             android:background="@color/fab2_color"
             android:padding="10dp"
-            android:text="CUSTOMER SUPPORT"
+            android:text="CUSTOMER FEEDBACK"
             />
 
         <Button

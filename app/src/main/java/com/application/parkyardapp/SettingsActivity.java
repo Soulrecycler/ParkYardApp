@@ -23,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         changeProfileBtn = findViewById(R.id.changeProfileBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
+        supportBtn=findViewById(R.id.supportBtn);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -33,6 +34,13 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(new Intent(SettingsActivity.this,ProfileActivity.class));
             }
         });
+
+            supportBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(SettingsActivity.this, FeedbackActivity.class));
+                }
+            });
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
