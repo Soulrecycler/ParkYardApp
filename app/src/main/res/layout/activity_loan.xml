@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7ca18"
+    android:background="@color/colorPrimaryDark"
     tools:context=".LoanActivity">
+
 
     <TextView
         android:id="@+id/loanHeader"
@@ -37,66 +38,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <LinearLayout
-        android:id="@+id/detailsContainer"
+    <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/loanHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:id="@+id/tablayout"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabTextColor="@color/colorPrimary"
+        app:tabBackground="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@id/loanHeader"
+
+    />
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager"
         >
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
-                    android:gravity="center_horizontal"
-                    android:text="PLEASE FILL IN THE BOOKING DETAILS"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Place"
-                    android:paddingTop="20dp"
-                    />
-
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-        </ScrollView>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="30dp"
-        android:text="save"
-        android:textColor="#ffffff"
-        android:elevation="4dp"
-        android:background="@drawable/btn"
-        />
+    </android.support.v4.view.ViewPager>
 
     <!-- __________________________COPY THE BELOW FABS FOR ALL ACTIVITIES__________________________ -->
 
