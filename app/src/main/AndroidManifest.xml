@@ -82,8 +82,8 @@
         <activity
             android:name=".RegMapActivity"
             android:label="Map" />
-        <activity android:name=".RouteActivity" />
-        <activity android:name=".FeedbackActivity"></activity>
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".BookFragActivity" />
     </application>
 
 </manifest>

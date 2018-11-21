@@ -8,12 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class viewadapter extends FragmentPagerAdapter {
+public class loanviewadapter extends FragmentPagerAdapter {
 
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String>FragmentListTitles = new ArrayList<>();
 
-    public viewadapter(FragmentManager fm) {
+    public loanviewadapter(FragmentManager fm) {
         super(fm);
 
     }

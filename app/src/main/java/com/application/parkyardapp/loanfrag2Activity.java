@@ -30,10 +30,6 @@ public class loanfrag2Activity extends Fragment {
     private static final String FIRE_LOG = "Fire_Log";
     View view;
 
-    public loanfrag2Activity(){
-
-    }
-
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
 

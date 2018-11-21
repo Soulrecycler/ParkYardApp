@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         usernameView = findViewById(R.id.usernameView);
 
         //fetch current user uid
-        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String user_id = firebaseAuth.getCurrentUser().getUid();
 
         //fetch document using current user id
         DocumentReference userRef = db.collection("users").document(user_id);

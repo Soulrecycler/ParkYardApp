@@ -1,78 +1,101 @@
 package com.application.parkyardapp;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-
-import com.google.android.gms.tasks.OnSuccessListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
 
 public class BookActivity extends AppCompatActivity {
 
-    private FirebaseFirestore db=FirebaseFirestore.getInstance();
-    private CollectionReference userRef=db.collection("users");
-    private CollectionReference placeRef;
-    private static final String FIRE_LOG = "Fire_Log";
-    View view;
+    private TabLayout tabLayout;
+
+    private ViewPager viewPager;
+
+    FloatingActionButton fab_plus,fab_settings,fab_logout;
+    Animation fab_open,fab_close,rotate_clockwise,rotate_anticlockwise;
+
+    Boolean fab_isOpen = false;
+
+    private FirebaseAuth firebaseAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_book);
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        bookviewadapter adapter = new bookviewadapter(getSupportFragmentManager());
+
+        //adds frags
+        adapter.AddFragment(new BookFragActivity(), "Find Your Parking Slot!");
 
 
 
-    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
+        //adapter setup
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-        placeRef = userRef.document().collection("places");
+        fab_plus = findViewById(R.id.fab_plus);
+        fab_settings = findViewById(R.id.fab_settings);
+        fab_logout = findViewById(R.id.fab_logout);
 
-        view=inflater.inflate(R.layout.activity_loanfrag2,container,false);
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        rotate_clockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        rotate_anticlockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        final LinearLayout my_places_list=(LinearLayout) view.findViewById(R.id.my_places_list);
-
-        // retrieving the places which are present in the user db
-        placeRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        /*-------------------------------------------------------------------COPY THIS FAB CODE FOR ALL PAGES ------------------------------------------------------------------------------------------------*/
+        //fab for settings and log out
+        fab_plus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+            public void onClick(View view) {
 
-
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    String places_id=documentSnapshot.getId();
-
-                    final View Card = inflater.inflate(R.layout.my_place_card, container, false);
-                    final Button showBtn=(Button)Card.findViewById(R.id.placeBtn);
-                    final TextView cityView = (TextView) Card.findViewById(R.id.cityView);
-                    final TextView stateView = (TextView) Card.findViewById(R.id.stateView);
-                    final TextView priceView = (TextView) Card.findViewById(R.id.priceView);
-
-
-                    cityView.setText(documentSnapshot.getString("city"));
-                    stateView.setText(documentSnapshot.getString("state"));
-                    priceView.setText(documentSnapshot.getString("price"));
-
-
-                    my_places_list.addView(Card);
-
-
-
+                if (fab_isOpen) {
+                    fab_settings.startAnimation(fab_close);
+                    fab_logout.startAnimation(fab_close);
+                    fab_plus.startAnimation(rotate_anticlockwise);
+                    fab_settings.setClickable(false);
+                    fab_logout.setClickable(false);
+                    fab_isOpen = false;
+                } else {
+                    fab_settings.startAnimation(fab_open);
+                    fab_logout.startAnimation(fab_open);
+                    fab_plus.startAnimation(rotate_clockwise);
+                    fab_settings.setClickable(true);
+                    fab_logout.setClickable(true);
+                    fab_isOpen = true;
                 }
 
             }
         });
 
-        return view;
-    }
+        fab_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(BookActivity.this, LoginActivity.class));
+            }
+        });
 
+        fab_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BookActivity.this, SettingsActivity.class));
+            }
+        });
+
+
+    }
 
     @Override
     public void onBackPressed()
@@ -81,7 +104,5 @@ public class BookActivity extends AppCompatActivity {
         startActivity(new Intent(BookActivity.this, HomeActivity.class));
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         finish();
-
     }
-
 }

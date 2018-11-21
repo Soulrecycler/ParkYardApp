@@ -1,7 +1,6 @@
 package com.application.parkyardapp;
 
 import android.content.Intent;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -33,7 +32,7 @@ public class LoanActivity extends AppCompatActivity {
         tabLayout=(TabLayout)findViewById(R.id.tablayout);
 
         viewPager=(ViewPager)findViewById(R.id.viewpager);
-        viewadapter adapter = new viewadapter(getSupportFragmentManager());
+        loanviewadapter adapter = new loanviewadapter(getSupportFragmentManager());
 
         //adds frags
         adapter.AddFragment(new loanfrag1Activity(),"Add my Place");

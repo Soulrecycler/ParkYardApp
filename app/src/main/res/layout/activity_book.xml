@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f22613"
+    android:background="@android:color/holo_red_dark"
     tools:context=".BookActivity">
+
 
     <TextView
         android:id="@+id/bookHeader"
@@ -37,29 +37,72 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <LinearLayout
+    <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookHeader"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:id="@+id/tablayout"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabTextColor="@color/colorPrimary"
+        app:tabBackground="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@id/bookHeader"
+
+        />
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager"
         >
+    </android.support.v4.view.ViewPager>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/bookCards"
-                android:orientation="vertical">
+    <!-- __________________________COPY THE BELOW FABS FOR ALL ACTIVITIES__________________________ -->
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="6dp"
+        android:src="@drawable/fab_plus"
+        app:backgroundTint="@color/fab2_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:pressedTranslationZ="12dp" />
 
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="200dp"
+        android:src="@drawable/settings_logo"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/fab1_color"
+        android:visibility="invisible"
+        />
 
-
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="300dp"
+        android:src="@drawable/logout_logo"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/fab1_color"
+        android:visibility="invisible"
+        />
+    <!-- __________________________________________________________________________________________ -->
 
 </android.support.constraint.ConstraintLayout>

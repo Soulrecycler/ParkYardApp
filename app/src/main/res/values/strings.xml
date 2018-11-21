@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ParkYard</string>
     <string name="google_maps_key">AIzaSyC6qo8Cy0RdQlY_W4WopoTwQWM-ljGXkVo</string>
+    <string name="title_activity_routes">Map</string>
 </resources>
