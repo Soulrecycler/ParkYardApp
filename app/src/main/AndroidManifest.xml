@@ -84,6 +84,10 @@
             android:label="Map" />
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".BookFragActivity" />
+        <activity
+            android:name=".ClietMapsActivity"
+            android:label="@string/title_activity_cliet_maps" />
+        <activity android:name=".ClientMapActivity"></activity>
     </application>
 
 </manifest>

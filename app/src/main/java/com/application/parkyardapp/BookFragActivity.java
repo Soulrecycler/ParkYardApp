@@ -1,5 +1,6 @@
 package com.application.parkyardapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
@@ -93,15 +94,20 @@ public class BookFragActivity extends Fragment {
                                 stateView.setText("State: "+document.getString("state"));
                                 priceView.setText("Price: "+document.getString("price"));
 
+                                final Double latitude = document.getDouble("latitude");
+                                final Double longitude = document.getDouble("longitude");
 
                                 my_places_list.addView(Card);
 
-//                                showBtn.setOnClickListener(new View.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(View view) {
-//                                        startActivity(new Intent(getContext(), RoutesActivity.class));
-//                                    }
-//                                });
+                                showBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent i = new Intent(getContext(),ClientMapActivity.class);
+                                        i.putExtra("latitude",latitude);
+                                        i.putExtra("longitude",longitude);
+                                        startActivity(i);
+                                    }
+                                });
 
                             }
                         }
